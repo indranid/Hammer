@@ -1,0 +1,108 @@
+question 2:
+
+public class order
+{
+string Name;
+decimal Cost;
+int Quantity;
+int Zipcode;
+}
+
+public class customer
+{
+string name;
+int zipcode;
+}
+
+public class Hammer
+{
+string name;
+string type;
+int quantity;
+}
+
+
+public decimal OrderTotal()
+{
+
+decimal Ordertotal;
+
+if (ordersize > = 50)
+decimal discount = (20*order.cost)/ 100;
+else
+dicount = 0;
+
+if(order.Zipcode == customer.Zipcode)
+decimal shippingcost = 0;
+else
+shippingcost = $50;
+
+
+Ordertotal = shippingcost + discount + Hammer.quantity*(Hammer.type.Count);
+
+return Ordertotal;
+
+}
+
+
+question 3 :
+
+public IList<Product> RecommendedProductsPurchased(IList<Product> cartList, IList<Product> recommendedList)
+{
+           IList<Product> actpur;
+          if(cartList.ProductId.count> 10)
+          recommendedList.ProductId = cartList.ProductId;
+
+          //assume that people buy min 30% of items from the recommendedList
+         
+
+        actpur.Cost = (cartList.Cost * cartList.Quantity )  + (30*recommendedList.Cost * recommendedList.Quantity)/100 ;
+
+
+    return actpur;
+
+}
+
+public class Product
+{
+	public string Name;
+	public int ProductId;
+	public decimal Cost;
+	public int Quantity;
+}
+
+public class recommendedList
+{
+	public string Name;
+	public int ProductId;
+	public decimal Cost;
+	public int Quantity;
+}
+
+
+
+
+question 4 : 
+
+Public Function SearchProducts() As DataTable
+	Dim criteria As String = txtSearchBox.Text
+
+	Dim cmdText As String = String.Format("SELECT * FROM Hammers WHERE HammerName LIKE '%{0}%'", criteria)
+
+	Using connection As New SqlConnection(connString)
+		Dim sqlComm As New SqlCommand(cmdText, connection)
+		sqlComm.CommandType = CommandType.Text
+
+		connection.Open()
+
+		Dim da As New SqlDataAdapter(sqlComm)
+		Dim dt As New DataTable()
+		da.Fill(dt)
+
+		Return dt
+	End Using
+End Function
+
+
+
+
